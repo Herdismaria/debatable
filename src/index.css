@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.navigation .ui.inverted.segment {
+  margin-bottom: 0;
+  background-color: #2a1e5c;
+  padding: 20px;
+}
+
+h1.ui.inverted.header {
+  color: #fff;
+  font-family: 'Pacifico', cursive;
+  padding: 50px 0px !important;
+  margin-top: 0px !important;
+}
+
+.header-container {
+  margin-top: 0;
+  height: 250px;
+  background-color: #2a1e5c;
+  font-family: 'Pacifico', cursive;
+  color: white;
+}
+
+.header-container h1 {
+  margin: 0;
+  font-size: 120px;
+  font-family: 'Pacifico', cursive;
+}
+
+.debate-info-container {
+  height: auto;
+  min-height: 600px;
+  margin: 0;
+  background-color: #e8e8ee;
+  text-align: center;
+  color: #2a1e5c;
+  font-family: 'Radley', serif;
+  padding: 70px 10px;
+}
+
+.debate-info-container h2 {
+  font-size: 45px;
+  font-family: 'Radley', serif;
+  padding-bottom: 20px;
+}
+
+.info-bubble {
+  width: 100%;
+  border-radius: 50%;
+  text-align: center;
+  padding: 50% 0;
+  line-height: 0;
+  position: relative;
+  background-color: #fe4a49;
+  font-size: 40px;
+  font-weight: bold;
+  font-family: 'Pacifico', cursive;
+  color: #fff;
+  margin-top: 20px;
+}
+
+.info-bubble-title {
+  color: #2a1e5c;
+  font-size: 20px;
+  font-family: 'Radley', serif;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.footer .segment {
+  background-color: #2a1e5c !important;
+}
+
+.footer p {
+  font-family: 'Radley', serif;
+}
+
+.footer h3 {
+  font-family: 'Pacifico', cursive !important;
+}
+
+.footer a {
+  color: #fe4a49;
+}
+
+.footer a:hover {
+  color: #f9dc5c;
+}
+
+.information-container {
+  background-color: #fe4a49;
+}
