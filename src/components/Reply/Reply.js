@@ -48,3 +48,11 @@ export default function Reply({
     </Comment>
   );
 }
+
+Reply.PropTypes = {
+  avatar: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  timestamp: PropTypes.string.isRequired,
+  reply: PropTypes.string.isRequired,
+  isUserComment: PropTypes.bool.isRequired,
+};

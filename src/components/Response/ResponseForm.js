@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Form, TextArea, Label, Button } from 'semantic-ui-react';
+import { Form, TextArea, Button } from 'semantic-ui-react';
 
 const textStyle = {
   textAlign: 'left',
@@ -10,7 +9,7 @@ const textStyle = {
   fontSize: '15px',
 };
 
-export default function ResponseForm(props) {
+export default function ResponseForm() {
   return (
     <Form
       style={{

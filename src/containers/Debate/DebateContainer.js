@@ -14,7 +14,7 @@ class DebateContainer extends React.Component {
         <MediaQuery minDeviceWidth={1224}>
           <Grid style={{ margin: '0' }}>
             <Grid.Row style={{ padding: '0px' }}>
-              <Grid.Column width={4}>
+              <Grid.Column width={4} style={{ padding: '0px' }}>
                 <InformationContainer smallScreen={false} />
               </Grid.Column>
               <Grid.Column width={12}>

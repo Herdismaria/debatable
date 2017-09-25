@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactFitText from 'react-fittext';
 
+InfoBubble.PropTypes = {
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};
 export default function InfoBubble({ title, text }) {
   return (
     <div>

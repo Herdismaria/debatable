@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Container, Segment, Menu, Button, Header } from 'semantic-ui-react';
-import ReactFitText from 'react-fittext';
+import { Container, Segment, Menu, Button } from 'semantic-ui-react';
 
-export default function AuthedNavigation() {
+export default function AuthedNavigation({ onLogOut }) {
   return (
     <div className="navigation">
       <Segment
@@ -19,7 +17,11 @@ export default function AuthedNavigation() {
               Debatable
             </Menu.Item>
             <Menu.Item position="right">
-              <Button as={Link} to="/logout" inverted>
+              <Button
+                inverted
+                style={{ marginTop: '0rem', fontFamily: 'Pacifico' }}
+                onClick={event => onLogOut(event)}
+              >
                 Log out
               </Button>
             </Menu.Item>
@@ -29,3 +31,7 @@ export default function AuthedNavigation() {
     </div>
   );
 }
+
+AuthedNavigation.PropTypes = {
+  onLogOut: PropTypes.func.isRequired,
+};

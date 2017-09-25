@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Segment, Container, Grid, Header, List } from 'semantic-ui-react';
+import { Segment, Container, Grid, Header } from 'semantic-ui-react';
 
-export default function Footer(props) {
+export default function Footer() {
   return (
     <div className="footer">
       <Segment inverted vertical style={{ padding: '4em 0em' }}>
@@ -20,7 +19,11 @@ export default function Footer(props) {
                   <strong>React</strong>
                 </p>
                 <p>
-                  You may view the <a href="#">Source Code</a> on Github{' '}
+                  You may view the{' '}
+                  <a href="https://github.com/Herdismaria/debatable">
+                    Source Code
+                  </a>{' '}
+                  on Github{' '}
                 </p>
                 <p>© 2017 Herdis Maria Sigurdardottir</p>
               </Grid.Column>

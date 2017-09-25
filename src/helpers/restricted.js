@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { checkIfAuthed } from './auth';
 
-export default BaseComponent => {
+export default (BaseComponent, store) => {
   class Restricted extends Component {
     componentWillMount() {
       this.checkAuthentication(this.props);
@@ -14,9 +15,13 @@ export default BaseComponent => {
     }
 
     checkAuthentication(props) {
+      if (store.getState().users.isFetching === true) {
+        return;
+      }
+
       const { history } = props;
       const nextPathName = history.location.pathname;
-      const isAuthed = true;
+      const isAuthed = checkIfAuthed(store);
       if (nextPathName === '/') {
         if (isAuthed === true) {
           history.replace({ pathname: '/debate' });
