@@ -12,26 +12,37 @@
       }
     }
   },
+
   debate: {
-    debateid,
-    topic,
-    startTime
+    isFetching,
+    error,
+    debate: {
+      debateId
+      topic,
+      startTime,
+      EndTime,
+      responseCount,
+    }
   },
+
   responses: {
     isFetching,
     error,
-    [responseid]: {
-      lastUpdated,
-      info: {
-        avatar,
-        responseid,
-        name,
-        text,
-        timestamp,
-        uid
+    [debateid]: {
+      [responseid]: {
+        lastUpdated,
+        info: {
+          avatar,
+          responseid,
+          name,
+          text,
+          timestamp,
+          uid
+        }
       }
     }
   },
+
   likeCount: {
     [responseid]: 0
   },

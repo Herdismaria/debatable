@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, TextArea, Button } from 'semantic-ui-react';
+import { Form, TextArea, Button, Input } from 'semantic-ui-react';
 
 const textStyle = {
   textAlign: 'left',
@@ -9,32 +9,36 @@ const textStyle = {
   fontSize: '15px',
 };
 
-export default function ResponseForm() {
+export default function ResponseForm(props) {
   return (
     <Form
       style={{
-        padding: '30px',
+        padding: '10px',
       }}
+      onSubmit={e => props.onSubmit(e)}
     >
       <Form.Field>
-        <label style={textStyle}>Add to the debate</label>
-        <TextArea
-          placeholder="Your response here..."
-          autoHeight
-          style={{ minHeight: 100 }}
-        />
+        <Input action>
+          <TextArea
+            autoHeight
+            rows={2}
+            placeholder="Respond..."
+            onChange={e => props.onChange(e.target.value)}
+            value={props.text}
+          />
+          <Button
+            type="submit"
+            style={{
+              backgroundColor: '#2a1e5c',
+              color: '#fff',
+              fontFamily: 'Radley',
+              fontWeight: 'bold',
+            }}
+          >
+            Debate
+          </Button>
+        </Input>
       </Form.Field>
-      <Button
-        type="submit"
-        style={{
-          backgroundColor: '#2a1e5c',
-          color: '#fff',
-          fontFamily: 'Radley',
-          fontWeight: 'bold',
-        }}
-      >
-        Post
-      </Button>
     </Form>
   );
 }

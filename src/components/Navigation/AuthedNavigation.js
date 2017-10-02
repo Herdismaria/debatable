@@ -8,18 +8,24 @@ export default function AuthedNavigation({ onLogOut }) {
       <Segment
         inverted
         textAlign="center"
-        style={{ minHeight: 100, padding: '1em 0em' }}
+        style={{ padding: '1em 0em' }}
         vertical
       >
         <Container>
           <Menu inverted stackable secondary size="large">
-            <Menu.Item header style={{ fontSize: 30, fontFamily: 'Pacifico' }}>
+            <Menu.Item
+              header
+              style={{ fontSize: 30, fontFamily: 'Pacifico', padding: '0px' }}
+            >
               Debatable
             </Menu.Item>
             <Menu.Item position="right">
               <Button
                 inverted
-                style={{ marginTop: '0rem', fontFamily: 'Pacifico' }}
+                style={{
+                  marginTop: '0rem',
+                  fontFamily: 'Pacifico',
+                }}
                 onClick={event => onLogOut(event)}
               >
                 Log out

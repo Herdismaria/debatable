@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactFitText from 'react-fittext';
 import { Header, Divider, Comment, Container } from 'semantic-ui-react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Reply } from '../../components';
 
 class ChatContainer extends React.Component {
@@ -9,13 +11,13 @@ class ChatContainer extends React.Component {
       <div className="chat-container">
         <ReactFitText compressor={0.5} maxFontSize={30}>
           <Header as="h2" style={{ fontFamily: 'Radley', padding: '10px' }}>
-            Topic of the day
+            {this.props.topic}
           </Header>
         </ReactFitText>
         <Divider />
         <Container
           style={{
-            maxHeight: '550px',
+            height: '500px',
             overflow: 'auto',
             paddingBottom: '20px',
             margin: 'auto',
@@ -99,4 +101,15 @@ class ChatContainer extends React.Component {
     );
   }
 }
-export default ChatContainer;
+
+function mapStateToProps({ debate }, props) {
+  return {
+    topic: debate.get('topic'),
+  };
+}
+
+/*function mapDispatchToProps (dispatch, props) {
+  return bindActionCreators( , dispatch)
+}*/
+
+export default connect(mapStateToProps)(ChatContainer);

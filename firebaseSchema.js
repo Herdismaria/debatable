@@ -4,23 +4,25 @@
     uid
     avatar
 
-/currentDebates
-  debateid
-    Topic
-    startTime
-    debateid
-
 /debates
-  debateid
+  currentDebate
+    debateid
     Topic
     startTime
+    endTime
+    responseCount
+  closedDebates
     debateid
-
-/closedDebates
-  debateid
     Topic
     startTime
+    endTime
+    responseCount
+  debates
     debateid
+    Topic
+    startTime
+    endTime
+    responseCount
 
 /responseNumber
   debateid: 0
@@ -38,11 +40,11 @@
       timestamp
       uid
 
-/likeCount
-  debateId:
-    responseid: 0
-
-/usersLikes
+/usersResponses
   uid
     debateid
       responseid: true
+
+/likeCount
+  debateId:
+    responseid: 0

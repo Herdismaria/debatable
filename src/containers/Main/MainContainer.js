@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import * as userActionCreators from '../../redux/modules/users';
+import * as debateActionCreators from '../../redux/modules/debate';
 import { formatUserInfo } from '../../helpers/utils';
 import { firebaseAuth } from '../../config/constants';
 import { AuthedNavigation, UnAuthedNavigation, Footer } from '../../components';
@@ -16,6 +17,7 @@ class MainContainer extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchAndHandleDebate();
     firebaseAuth().onAuthStateChanged(user => {
       if (user) {
         const userData = user.providerData[0];
@@ -70,7 +72,13 @@ function mapStateToProps({ users }, props) {
 }
 
 function mapDispatchToProps(dispatch, props) {
-  return bindActionCreators(userActionCreators, dispatch);
+  return bindActionCreators(
+    {
+      ...userActionCreators,
+      ...debateActionCreators,
+    },
+    dispatch,
+  );
 }
 
 export default withRouter(

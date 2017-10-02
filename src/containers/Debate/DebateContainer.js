@@ -12,7 +12,7 @@ class DebateContainer extends React.Component {
     return (
       <div>
         <MediaQuery minDeviceWidth={1224}>
-          <Grid style={{ margin: '0' }}>
+          <Grid textAlign="center" style={{ margin: '0' }}>
             <Grid.Row style={{ padding: '0px' }}>
               <Grid.Column width={4} style={{ padding: '0px' }}>
                 <InformationContainer smallScreen={false} />
@@ -21,7 +21,7 @@ class DebateContainer extends React.Component {
                 <Grid.Row>
                   <ChatContainer />
                 </Grid.Row>
-                <Grid.Row textAlign="left">
+                <Grid.Row>
                   <ResponseFormContainer />
                 </Grid.Row>
               </Grid.Column>

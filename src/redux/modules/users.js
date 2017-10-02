@@ -1,13 +1,14 @@
 import { auth, logout, saveUser } from '../../helpers/auth';
 import { formatUserInfo } from '../../helpers/utils';
 import { fetchUser } from '../../helpers/api';
-
-const AUTH_USER = 'AUTH_USER';
-const UNAUTH_USER = 'UNAUTH_USER';
-const FETCHING_USER = 'FETCHING_USER';
-const FETCHING_USER_FAILURE = 'FETCHING_USER_FAILURE';
-const FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS';
-const REMOVE_FETCHING_USER = 'REMOVE_FETCHING_USER';
+import {
+  AUTH_USER,
+  UNAUTH_USER,
+  FETCHING_USER,
+  FETCHING_USER_FAILURE,
+  FETCHING_USER_SUCCESS,
+  REMOVE_FETCHING_USER,
+} from '../constants';
 
 export function authUser(uid) {
   return {
@@ -22,13 +23,13 @@ export function unautUser() {
   };
 }
 
-function fetchingUser() {
+export function fetchingUser() {
   return {
     type: FETCHING_USER,
   };
 }
 
-function fetchingUserFailure(error) {
+export function fetchingUserFailure(error) {
   return {
     type: FETCHING_USER_FAILURE,
     error: 'Error fetching user',
