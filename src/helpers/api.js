@@ -1,4 +1,5 @@
 import { ref } from '../config/constants';
+import { List } from 'immutable';
 
 export function fetchUser(uid) {
   return ref
@@ -12,6 +13,31 @@ export function fetchDebate() {
     .child('debates/currentDebate')
     .once('value')
     .then(snapshot => snapshot.val());
+}
+
+export function fetchUserResponses(uid, debateId) {
+  return ref
+    .child(`/userResponses/${uid}/${debateId}`)
+    .once('value')
+    .then(snapshot => {
+      return snapshot.val() || {};
+    });
+}
+//setting up listener, does not return a promise
+export function listenToFeed(cb, errorCb, debateId) {
+  let timesCalled = 0;
+  ref.child(`/responses/${debateId}`).on(
+    'value',
+    snapshot => {
+      const feed = snapshot.val() || {};
+      const sortedIds = Object.keys(feed).sort((a, b) => {
+        return feed[a].timestamp - feed[b].timestamp;
+      });
+      let initialFetch = timesCalled++ <= 0;
+      cb({ feed, sortedIds }, initialFetch); //return the data from firebase and the sorted ids
+    },
+    errorCb,
+  ); // error callback
 }
 
 export function addToResponses(debateId, response) {

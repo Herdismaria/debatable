@@ -1,14 +1,6 @@
 import React from 'react';
 import { Form, TextArea, Button, Input } from 'semantic-ui-react';
 
-const textStyle = {
-  textAlign: 'left',
-  fontFamily: 'Radley',
-  color: '#2a1e5c',
-  fontWeight: 'bold',
-  fontSize: '15px',
-};
-
 export default function ResponseForm(props) {
   return (
     <Form
@@ -25,6 +17,9 @@ export default function ResponseForm(props) {
             placeholder="Respond..."
             onChange={e => props.onChange(e.target.value)}
             value={props.text}
+            style={{
+              fontFamily: 'Radley',
+            }}
           />
           <Button
             type="submit"

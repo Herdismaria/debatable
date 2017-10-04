@@ -6,6 +6,9 @@ import {
   RESET_NEW_RESPONSES_AVAILABLE,
 } from '../constants';
 import { Map, List } from 'immutable';
+import { addListener } from './listeners';
+import { listenToFeed } from '../../helpers/api';
+import { addMultipleResponses } from './responses';
 
 export function settingFeedListener() {
   return {
@@ -40,12 +43,35 @@ export function addNewResponseIdToFeed(responseId) {
   };
 }
 
+export function setAndHandleFeedListener() {
+  return function(dispatch, getState) {
+    if (getState().listeners.feed === true) {
+      return;
+    }
+
+    const debateId = getState().debate.get('debateId');
+
+    dispatch(addListener('feed'));
+    dispatch(settingFeedListener());
+    listenToFeed(
+      ({ feed, sortedIds }, initialFetch) => {
+        dispatch(addMultipleResponses(feed));
+        initialFetch === true
+          ? dispatch(settingFeedListenerSuccess(sortedIds))
+          : dispatch(addNewResponseIdToFeed(sortedIds[sortedIds.length - 1]));
+      },
+      error => dispatch(settingFeedListenerError(error)),
+      debateId,
+    );
+  };
+}
+
 const initialState = Map({
   newResponsesAvailable: false,
   newResponsesToAdd: List(),
   isFetching: false,
   error: '',
-  ResponseIds: List(),
+  responseIds: List(),
 });
 
 export default function feed(state = initialState, action) {
@@ -64,21 +90,23 @@ export default function feed(state = initialState, action) {
         isFetching: false,
         error: '',
         newResponsesAvailable: false,
-        newResponsesToAdd: action.responseIds,
+        responseIds: List(action.responseIds),
       });
     case RESET_NEW_RESPONSES_AVAILABLE:
       return state.merge({
         responseIds: state
-          .get('newResponsesToAdd')
-          .concat(state.get('responseIds')),
+          .get('responseIds')
+          .concat(state.get('newResponsesToAdd')),
         newResponsesToAdd: List(),
         newResponsesAvailable: false,
       });
     case ADD_NEW_RESPONSE_ID_TO_FEED:
+      console.log('action', action);
       return state.merge({
         newResponsesToAdd: state
           .get('newResponsesToAdd')
           .unshift(action.responseId),
+        newResponsesAvailable: true,
       });
     default:
       return state;

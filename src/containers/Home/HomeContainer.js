@@ -2,7 +2,6 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Grid } from 'semantic-ui-react';
-import { Map } from 'immutable';
 import { InfoBubble } from '../../components';
 import * as debateActionCreators from '../../redux/modules/debate';
 import ReactFitText from 'react-fittext';

@@ -1,4 +1,4 @@
-import { Map, fromJS } from 'immutable';
+import { Map } from 'immutable';
 import {
   FETCHING_DEBATE,
   FETCHING_DEBATE_ERROR,

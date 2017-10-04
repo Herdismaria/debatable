@@ -7,7 +7,7 @@ import {
   REMOVE_FETCHING,
   UPDATING_RESPONSE_TEXT,
 } from '../constants';
-import { Map, List } from 'immutable';
+import { Map } from 'immutable';
 import { saveResponse } from '../../helpers/api';
 import { formatResponse } from '../../helpers/utils';
 
@@ -63,7 +63,6 @@ export function addResponse(responseText) {
     const uid = getState().users.authedId;
     const user = getState().users[uid].info;
     const debateId = getState().debate.get('debateId');
-    console.log(debateId);
     const response = formatResponse(responseText, user);
     saveResponse(debateId, response)
       .then(responseWithId => {
@@ -96,10 +95,10 @@ export default function responses(state = initialState, action) {
       return state.merge({
         isFetching: false,
         error: '',
-        [action.responseId]: action.response,
+        [action.response.responseId]: action.response,
       });
     case ADD_MULTIPLE_RESPONSES:
-      return state.merge(action.responseIds);
+      return state.merge(action.responses);
     case REMOVE_FETCHING:
       return state.merge({
         isFetching: false,

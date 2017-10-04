@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ResponseForm } from '../../components';
 import * as ResponsesActionCreators from '../../redux/modules/responses';
-import { formatResponse } from '../../helpers/utils';
 
 class ResponseFormContainer extends React.Component {
   constructor(props) {

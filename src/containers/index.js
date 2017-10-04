@@ -8,5 +8,6 @@ export {
 export { default as ChatContainer } from './Chat/ChatContainer';
 export {
   default as ResponseFormContainer,
-} from './Response/ResponseFormContainer';
+} from './ResponseForm/ResponseFormContainer';
 export { default as LoginContainer } from './Login/LoginContainer';
+export { default as ResponseContainer } from './Response/ResponseContainer';

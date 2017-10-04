@@ -1,5 +1,4 @@
 import { ref, firebaseAuth } from '../config/constants';
-import { addDebate } from './api';
 
 export function auth(authType) {
   switch (authType) {

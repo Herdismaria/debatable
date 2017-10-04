@@ -46,7 +46,8 @@ class MainContainer extends React.Component {
   }
 
   render() {
-    return this.props.isFetching === true ? (
+    const { isFetchingUser, isFetchingDebate } = this.props;
+    return isFetchingUser === true || isFetchingDebate === true ? (
       <Dimmer active inverted>
         <Loader size="large">Loading</Loader>
       </Dimmer>
@@ -64,10 +65,11 @@ class MainContainer extends React.Component {
   }
 }
 
-function mapStateToProps({ users }, props) {
+function mapStateToProps({ users, debate }, props) {
   return {
     isAuthed: users.isAuthed,
-    isFetching: users.isFetching,
+    isFetchingUser: users.isFetching,
+    isFetchingDebate: debate.get('isFetching'),
   };
 }
 
