@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export function formatUserInfo(name, avatar, uid) {
   return {
     name,
@@ -14,4 +16,8 @@ export function formatResponse(text, { name, avatar, uid }) {
     uid,
     timestamp: Date.now(),
   };
+}
+
+export function formatTimestamp(timestamp) {
+  return moment(timestamp).format('lll');
 }

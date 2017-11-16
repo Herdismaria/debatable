@@ -69,13 +69,15 @@ export function fetchAndHandleAuthedUser(authType) {
         const userInfo = formatUserInfo(
           userData.displayName,
           userData.photoURL,
-          user.uid,
+          user.uid
         );
         return dispatch(fetchingUserSuccess(user.uid, userInfo, Date.now()));
       })
       .then(({ user }) => saveUser(user))
       .then(user => dispatch(authUser(user.uid)))
-      .catch(error => dispatch(fetchingUserFailure(error)));
+      .catch(error => {
+        dispatch(fetchingUserFailure(error));
+      });
   };
 }
 

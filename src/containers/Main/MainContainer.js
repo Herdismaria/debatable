@@ -24,7 +24,7 @@ class MainContainer extends React.Component {
         const userInfo = formatUserInfo(
           userData.displayName,
           userData.photoURL,
-          user.uid,
+          user.uid
         );
         this.props.authUser(user.uid);
         this.props.fetchingUserSuccess(user.uid, userInfo, Date.now());
@@ -79,10 +79,10 @@ function mapDispatchToProps(dispatch, props) {
       ...userActionCreators,
       ...debateActionCreators,
     },
-    dispatch,
+    dispatch
   );
 }
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(MainContainer),
+  connect(mapStateToProps, mapDispatchToProps)(MainContainer)
 );

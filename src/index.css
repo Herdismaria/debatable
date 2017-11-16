@@ -94,3 +94,70 @@ h1.ui.inverted.header {
 .information-container {
   background-color: #fe4a49;
 }
+
+.speak-bubble {
+  margin: 20px;
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 100px;
+  height: auto;
+  border-radius: 30px;
+  box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  text-align: left;
+}
+
+.speak-bubble.guest {
+  margin-left: -73px;
+}
+
+.speak-bubble.user {
+  margin-left: 73px;
+}
+
+.avatar-container-user {
+  flex: 2;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-user {
+  flex: 7;
+  background: #9e98b4;
+  padding: 10px;
+  padding-left: 30px;
+}
+
+.avatar-container-guest {
+  flex: 2;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-guest {
+  flex: 7;
+  background: #feacac;
+  padding: 10px;
+}
+
+.avatar {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+
+.name {
+  color: #2a1e5c;
+  font-weight: bold;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #2a1e5c;
+  margin-bottom: 10px;
+}

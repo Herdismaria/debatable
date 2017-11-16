@@ -4,16 +4,16 @@ export function auth(authType) {
   switch (authType) {
     case 'FACEBOOK_AUTH':
       return firebaseAuth().signInWithPopup(
-        new firebaseAuth.FacebookAuthProvider(),
+        new firebaseAuth.FacebookAuthProvider()
       );
     case 'TWITTER_AUTH':
       return firebaseAuth().signInWithPopup(
-        new firebaseAuth.TwitterAuthProvider(),
+        new firebaseAuth.TwitterAuthProvider()
       );
     case 'GOOGLE_AUTH':
     default:
       return firebaseAuth().signInWithPopup(
-        new firebaseAuth.GoogleAuthProvider(),
+        new firebaseAuth.GoogleAuthProvider()
       );
   }
 }
@@ -23,7 +23,6 @@ export function checkIfAuthed(store) {
 }
 
 export function logout() {
-  //addDebate();
   return firebaseAuth().signOut();
 }
 

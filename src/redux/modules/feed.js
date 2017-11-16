@@ -56,12 +56,10 @@ export function setAndHandleFeedListener() {
     listenToFeed(
       ({ feed, sortedIds }, initialFetch) => {
         dispatch(addMultipleResponses(feed));
-        initialFetch === true
-          ? dispatch(settingFeedListenerSuccess(sortedIds))
-          : dispatch(addNewResponseIdToFeed(sortedIds[sortedIds.length - 1]));
+        dispatch(settingFeedListenerSuccess(sortedIds));
       },
       error => dispatch(settingFeedListenerError(error)),
-      debateId,
+      debateId
     );
   };
 }
@@ -101,7 +99,6 @@ export default function feed(state = initialState, action) {
         newResponsesAvailable: false,
       });
     case ADD_NEW_RESPONSE_ID_TO_FEED:
-      console.log('action', action);
       return state.merge({
         newResponsesToAdd: state
           .get('newResponsesToAdd')

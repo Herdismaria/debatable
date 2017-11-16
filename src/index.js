@@ -17,8 +17,8 @@ const store = createStore(
     applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__
       ? window.__REDUX_DEVTOOLS_EXTENSION__()
-      : f => f,
-  ),
+      : f => f
+  )
 );
 
 // HOC to check if user is authenticated and route accordingly
@@ -28,6 +28,6 @@ function checkAuth(component) {
 
 ReactDOM.render(
   <Provider store={store}>{getRoutes(checkAuth)}</Provider>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );
 registerServiceWorker();

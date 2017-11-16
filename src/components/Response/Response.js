@@ -1,49 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Comment } from 'semantic-ui-react';
-
-let contentStyle = {
-  textAlign: 'left',
-  backgroundColor: '#FEACAC',
-  borderRadius: '20px',
-  padding: '10px',
-  marginTop: '1em',
-  marginRight: '3.5em',
-};
-
-let avatarStyle = {};
+import moment from 'moment';
+import { formatTimestamp } from '../../helpers/utils';
 
 export default function Response({ response }) {
-  //console.log(response);
   const isUserResponse = response.get('isUserResponse');
-  return (
-    <Comment>
-      <Comment.Avatar
-        as="a"
-        src={response.get('avatar')}
-        style={isUserResponse ? { ...avatarStyle, float: 'right' } : {}}
-      />
-      <Comment.Content
-        style={
-          isUserResponse
-            ? {
-                ...contentStyle,
-                backgroundColor: '#9E98B4',
-              }
-            : contentStyle
-        }
-      >
-        <Comment.Author as="a">{response.get('name')}</Comment.Author>
-        <Comment.Metadata>
-          <span>{response.get('timestamp')}</span>
-        </Comment.Metadata>
-        <Comment.Text>{response.get('text')}</Comment.Text>
-        <Comment.Actions>
-          <a>Reply</a>
-        </Comment.Actions>
-      </Comment.Content>
-    </Comment>
+  const res = isUserResponse ? (
+    <div className="speak-bubble user">
+      <div className="info-user">
+        <div className="name">
+          <span>{response.get('name')}</span>
+        </div>
+        <div className="timestamp">
+          {formatTimestamp(response.get('timestamp'))}
+        </div>
+        <div>{response.get('text')}</div>
+      </div>
+      <div className="avatar-container-user">
+        <img src={response.get('avatar')} alt="avatar" className="avatar" />
+      </div>
+    </div>
+  ) : (
+    <div className="speak-bubble guest">
+      <div className="avatar-container-guest">
+        <img src={response.get('avatar')} alt="avatar" className="avatar" />
+      </div>
+      <div className="info-guest">
+        <div className="name">
+          <span>{response.get('name')}</span>
+        </div>
+        <div className="timestamp">{response.get('timestamp')}</div>
+        <div>{response.get('text')}</div>
+      </div>
+    </div>
   );
+  return res;
 }
 
 Response.PropTypes = {
@@ -51,5 +42,4 @@ Response.PropTypes = {
   name: PropTypes.string.isRequired,
   timestamp: PropTypes.string.isRequired,
   reply: PropTypes.string.isRequired,
-  //isUserComment: PropTypes.bool.isRequired,
 };
